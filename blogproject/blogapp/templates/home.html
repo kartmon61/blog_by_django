@@ -9,7 +9,7 @@
     <script src='main.js'></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+  
 </head>
 <header>
     <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
@@ -37,7 +37,6 @@
   </nav>
 </header>
 <body>
-    
     {% for blog in blogs.all %}
     <div class="card" style="width: 18rem;">
         <div class="card-body">
@@ -47,6 +46,10 @@
         </div>
       </div>
       {% endfor %}
-     
+      <div class="card" style="width: 18rem;">
+      <div class="card-body">
+     <a href={% url 'createBlog' %}>글쓰기</a>
+    </div>
+  </div>
 </body>
 </html>

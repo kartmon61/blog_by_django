@@ -1,0 +1,17 @@
+
+<form action="/blog/create" method="post">
+  {% csrf_token %}
+  <div>
+    <label for="title">제목</label><br>
+    <input type="text" name="title" id="title">
+  </div>
+  <div>
+    <label for="sub_title">부제목</label><br>
+    <input type="text" name="sub_title" id="sub_title">
+  </div>
+  <div>
+      <label for="content">내용</label><br>
+    <textarea name="content" id="content" cols="30" rows="10"></textarea>
+  </div>
+  <input type="submit" value="글쓰기">
+</form>
