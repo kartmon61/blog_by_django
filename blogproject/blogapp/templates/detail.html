@@ -9,8 +9,16 @@
     <script src='main.js'></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
 </head>
+<style>
+.comment {
+  display: block;
+  float:right;
+  margin-top:-40px;
+  margin-right: 500px;
+}
+
+</style>
 <header>
     <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
         <div class="col-md-6 px-0">
@@ -45,6 +53,22 @@
     <div class="card-body">
       <h5 class="card-title">{{blog.sub_title}}</h5>
       <p class="card-text">{{blog.body}}</p>
+    
+      <form action="/blog/commentcreate/{{blog.id}}" method="post">
+        {%csrf_token%}
+        <input type="text" name="comment" id="comment">
+        <input type="submit" value="댓글 달기">
+    </form>
+
+    {% for i in comment %}
+        <p>{{i.content}}</p>
+        
+        <a href="/blog/commentdelete/{{blog.id}}/{{i.id}}" class="comment">댓글 삭제</a>
+
+    {% endfor %}
+
+    <a href="/blog/edit/{{blog.id}}">글 수정하기</a>
+    <a href="/blog/delete/{{blog.id}}">글 삭제하기</a>
       <a href= {% url 'home' %} class="btn btn-primary">돌아가기</a>
     </div>
     <div class="card-footer text-muted">
